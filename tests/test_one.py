@@ -1,6 +1,6 @@
 import pytest
 
-@pytest.mark.run_smoke
+@pytest.mark.smoke
 def test_passing():
-    print("@pytest.mark.run_smoke")
+    print("@pytest.mark.smoke")
     assert (1, 2, 3) == (1, 2, 3)

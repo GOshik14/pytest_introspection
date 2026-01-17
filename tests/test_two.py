@@ -1,7 +1,7 @@
 import pytest
 from time import sleep
 
-@pytest.mark.run_smoke
+@pytest.mark.smoke
 def test_failing():
     a = 1
     sleep(3)
