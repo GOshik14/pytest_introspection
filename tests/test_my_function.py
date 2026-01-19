@@ -74,3 +74,15 @@ def test_divide_catch_arithm_exception_1_0():
 def test_add_slow():
     time.sleep(5)
     assert my_funcs.add(1, 2) == 3
+
+
+### Standard pytest marks ###
+
+@pytest.mark.skip(reason="The feature is currently fixing")
+def test_add_string_like_int():
+    time.sleep(5)
+    assert my_funcs.add("1", "2") == "3"
+
+@pytest.mark.xfail(reason="The feature is currently fixing")
+def test_divide_by_inf():
+    assert my_funcs.divide(1, float("inf")) == 0.0
