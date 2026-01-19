@@ -24,3 +24,37 @@ def test_divide_negative():
 
 def test_divide_both_neg_pos():
     assert my_funcs.divide(-4, 2) == -2
+
+#### Catching exceptions tests ####
+def test_add_catch_exception_int_str():
+    with pytest.raises(ValueError):
+        my_funcs.add(1, "1")
+
+def test_add_catch_exception_int_float():
+    with pytest.raises(ValueError):
+        my_funcs.add(1, 1.)
+
+def test_add_catch_exception_str_float():
+    with pytest.raises(ValueError):
+        my_funcs.add("1", 1.)
+
+
+def test_divide_catch_value_exception_int_str():
+    with pytest.raises(ValueError):
+        my_funcs.divide(1, "1")
+
+def test_divide_catch_value_exception_int_float():
+    with pytest.raises(ValueError):
+        my_funcs.divide(1, 1.)
+
+def test_divide_catch_value_exception_str_float():
+    with pytest.raises(ValueError):
+        my_funcs.divide("1", 1.)
+
+def test_divide_catch_arithm_exception_0_0():
+    with pytest.raises(ArithmeticError):
+        my_funcs.divide(0, 0)
+
+def test_divide_catch_arithm_exception_1_0():
+    with pytest.raises(ArithmeticError):
+        my_funcs.divide(1, 0)
