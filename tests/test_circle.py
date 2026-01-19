@@ -32,3 +32,6 @@ class TestCircle:
     def teardown_method(self, method):
         print(f"Tearing down {method}")
         del self.circle
+    
+    def test_not_same_area_rectangle(self, my_rectangle):
+        assert self.circle.area() != my_rectangle.area()
