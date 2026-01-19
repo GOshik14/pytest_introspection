@@ -1,4 +1,5 @@
 import pytest
+import time
 import sys
 sys.path.append("/home/egor/Python/pytest_introspection/source")
 import source.my_functions as my_funcs
@@ -43,7 +44,7 @@ def test_add_catch_exception_str_float():
 
 @pytest.mark.generated_exception
 def test_divide_catch_value_exception_int_str():
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError): 
         my_funcs.divide(1, "1")
 
 @pytest.mark.generated_exception
@@ -65,3 +66,11 @@ def test_divide_catch_arithm_exception_0_0():
 def test_divide_catch_arithm_exception_1_0():
     with pytest.raises(ArithmeticError):
         my_funcs.divide(1, 0)
+
+
+### Slow tests ###
+
+@pytest.mark.slow
+def test_add_slow():
+    time.sleep(5)
+    assert my_funcs.add(1, 2) == 3
