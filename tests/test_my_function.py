@@ -6,24 +6,22 @@ import source.my_functions as my_funcs
 
 ### Simple math tests ###
 
-def test_add_positive():
-    assert my_funcs.add(1, 2) == 3
+@pytest.mark.parametrize("a, b, expected", [
+    (1, 2, 3),
+    (-1, -2, -3),    
+    (1, -2, -1),
+], ids = ["int_positive", "int_negative", "int_both_neg_pos"])
+def test_add(a, b, expected):
+    assert my_funcs.add(a, b) == expected
 
-def test_add_negative():
-    assert my_funcs.add(-1, -2) == -3
 
-def test_add_both_neg_pos():
-    assert my_funcs.add(1, -2) == -1
-
-
-def test_divide_positive():
+@pytest.mark.parametrize("a, b, expected", [
+    (4, 2, 2),
+    (-4, -2, 2),    
+    (-4, 2, -2)
+], ids = ["positive", "negative", "both_neg_pos"])
+def test_divide_positive(a, b, expected):
     assert my_funcs.divide(4, 2) == 2
-
-def test_divide_negative():
-    assert my_funcs.divide(-4, -2) == 2
-
-def test_divide_both_neg_pos():
-    assert my_funcs.divide(-4, 2) == -2
 
 #### Catching exceptions tests ####
 def test_add_catch_exception_int_str():
